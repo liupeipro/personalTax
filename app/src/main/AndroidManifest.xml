@@ -3,14 +3,14 @@
     package="com.hh.personaltax">
 
   <application
-      android:name="com.hh.personaltax.base.TaxApplication"
+      android:name=".base.TaxApplication"
       android:allowBackup="true"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name="com.hh.personaltax.MainActivity">
+    <activity android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -18,12 +18,24 @@
       </intent-filter>
     </activity>
     <activity
-        android:name="com.hh.personaltax.setting.CostAddActivity"
+        android:name=".setting.CostAddActivity"
         android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
-    <activity android:name="com.hh.personaltax.setting.CostCheckActivity"></activity>
+    <activity android:name=".setting.CostCheckActivity"/>
     <activity
-        android:name="com.hh.personaltax.calculator.CalculatorFilterActivity"
+        android:name=".calculator.CalculatorFilterActivity"
         android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+    <activity
+        android:name=".setting.SetModifyActivity"
+        android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+    </activity>
+    <activity
+        android:name=".setting.SetAddTypeRuleActivity"
+        android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+    </activity>
+    <activity android:name=".about.AboutActivity">
+    </activity>
+    <activity android:name=".about.IntroduceActivity">
+    </activity>
   </application>
 
 </manifest>

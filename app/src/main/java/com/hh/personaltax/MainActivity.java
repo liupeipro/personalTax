@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import com.hh.personaltax.about.AboutFragment;
 import com.hh.personaltax.base.BaseFragment;
-import com.hh.personaltax.calculator.CalculatorFragment;
+import com.hh.personaltax.calculator.CalculatorListFragment;
 import com.hh.personaltax.setting.SetsFragment;
 import com.hh.personaltax.view.BottomBar;
-import com.hh.personaltax.view.BottomBarTab;
+import com.hh.personaltax.view.BottomTabBar;
+import com.hh.personaltax.view.BottomTabTextItem;
+import com.hh.personaltax.view.BottomTextBarTab;
 import java.util.ArrayList;
 import java.util.List;
 import me.yokeyword.fragmentation.SupportActivity;
@@ -17,7 +19,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 public class MainActivity extends SupportActivity implements BaseFragment.OnBackToFirstListener {
     private List<SupportFragment> mFragments = new ArrayList<SupportFragment>();
-    private BottomBar mBottomBar;
+    private BottomTabBar mBottomBar;
     
     @Override public void onBackPressedSupport() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
@@ -35,11 +37,11 @@ public class MainActivity extends SupportActivity implements BaseFragment.OnBack
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        SupportFragment firstFrag = findFragment(CalculatorFragment.class);
+        SupportFragment firstFrag = findFragment(CalculatorListFragment.class);
         
         if (firstFrag == null) {
             //          初始化
-            mFragments.add(CalculatorFragment.newInstance());
+            mFragments.add(CalculatorListFragment.newInstance());
             mFragments.add(SetsFragment.newInstance());
             mFragments.add(AboutFragment.newInstance());
             loadMultipleRootFragment(R.id.fl_container, 0, mFragments.get(0), mFragments.get(1),
@@ -53,15 +55,12 @@ public class MainActivity extends SupportActivity implements BaseFragment.OnBack
             mFragments.set(2, findFragment(AboutFragment.class));
         }
         
-        mBottomBar = (BottomBar) findViewById(R.id.bottomBar);
-        mBottomBar.addItem(new BottomBarTab(this, R.mipmap.ic_discover_white_24dp,
-                                            getString(R.string.tab_calculator)))
-                  .addItem(new BottomBarTab(this, R.mipmap.ic_message_white_24dp,
-                                            getString(R.string.tab_set)))
-                  .addItem(new BottomBarTab(this, R.mipmap.ic_message_white_24dp,
-                                            getString(R.string.tab_about)));
+        mBottomBar = (BottomTabBar) findViewById(R.id.bottomBar);
+        mBottomBar.addItem(new BottomTabTextItem(this, getString(R.string.tab_calculator)))
+                  .addItem(new BottomTabTextItem(this, getString(R.string.tab_set)))
+                  .addItem(new BottomTabTextItem(this, getString(R.string.tab_about)));
         
-        mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
+        mBottomBar.setOnTabSelectedListener(new BottomTabBar.OnTabSelectedListener() {
             @Override public void onTabSelected(int position, int prePosition) {
                 showHideFragment(mFragments.get(position), mFragments.get(prePosition));
             }
@@ -75,8 +74,8 @@ public class MainActivity extends SupportActivity implements BaseFragment.OnBack
                 
                 // 如果不在该类别Fragment的主页,则回到主页;
                 if (count > 1) {
-                    if (currentFragment instanceof CalculatorFragment) {
-                        currentFragment.popToChild(CalculatorFragment.class, false);
+                    if (currentFragment instanceof CalculatorListFragment) {
+                        currentFragment.popToChild(CalculatorListFragment.class, false);
                     } else if (currentFragment instanceof SetsFragment) {
                         currentFragment.popToChild(SetsFragment.class, false);
                     } else if (currentFragment instanceof AboutFragment) {

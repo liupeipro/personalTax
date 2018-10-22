@@ -31,7 +31,7 @@ public class CostCheckActivity extends BaseActivity {
                 case R.id.topbar_right_change_button:
                     Intent intent = new Intent(CostCheckActivity.this, CostAddActivity.class);
                     
-                    intent.putExtra(MoneyConstants.INTENT_COST_EDIT_ITEM_ID, mItem.get_id());
+                    intent.putExtra(MoneyConstants.INTENT_TAX_TYPE_MODIFY_ID, mItem.get_id());
                     startActivity(intent);
                     finish();
                     
@@ -49,7 +49,7 @@ public class CostCheckActivity extends BaseActivity {
     private void doDeleteRecord() {
         TaxApplication.getDaoInstant().getCostItemDao().delete(mItem);
         ToastUtils.showShort("删除成功");
-        sendBroadcast(new Intent(ReceiverUtils.RECEIVER_COST_LIST_UPDATE));
+        sendBroadcast(new Intent(ReceiverUtils.RECEIVER_TAX_TYPE_LIST_UPDATE));
         onBackPressed();
     }
     
@@ -57,7 +57,7 @@ public class CostCheckActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cost_check);
         
-        Long intentItemId = getIntent().getLongExtra(MoneyConstants.INTENT_COST_EDIT_ITEM_ID, -1);
+        Long intentItemId = getIntent().getLongExtra(MoneyConstants.INTENT_TAX_TYPE_MODIFY_ID, -1);
         
         if (intentItemId != -1) {
             mItem = TaxApplication.getDaoInstant()

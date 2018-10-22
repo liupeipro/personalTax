@@ -1,4 +1,4 @@
-package com.peil.personaltax;
+package com.hh.personaltax;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -18,6 +18,6 @@ import static org.junit.Assert.assertEquals;
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
         
-        assertEquals("com.peil.smartmoney", appContext.getPackageName());
+        assertEquals("com.hh.smartmoney", appContext.getPackageName());
     }
 }

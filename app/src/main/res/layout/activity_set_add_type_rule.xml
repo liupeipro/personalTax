@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/view_container_bg"
+    android:orientation="vertical"
+    >
+
+  <com.qmuiteam.qmui.widget.QMUITopBarLayout
+      android:id="@+id/bar_top"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      app:qmui_topbar_left_back_drawable_id="@drawable/qmui_icon_topbar_back"
+      />
+
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/height_48"
+      android:layout_marginLeft="@dimen/padding_10"
+      android:layout_marginRight="@dimen/padding_10"
+      android:layout_marginTop="@dimen/padding_10"
+      android:background="@color/qmui_config_color_white"
+      android:gravity="center_vertical"
+      android:paddingLeft="@dimen/padding_10"
+      android:paddingRight="@dimen/padding_10"
+      android:paddingTop="@dimen/padding_10"
+      >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="金额类型:"
+        android:textColor="@color/black_333333"
+        android:textSize="@dimen/font_size_14"
+        />
+
+    <com.hh.personaltax.view.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/bottombar_height"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="bottom"
+        />
+
+  </RelativeLayout>
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/height_48"
+      android:layout_marginBottom="@dimen/padding_10"
+      android:layout_marginLeft="@dimen/padding_10"
+      android:layout_marginRight="@dimen/padding_10"
+      android:background="@color/qmui_config_color_white"
+      android:gravity="center_vertical"
+      android:paddingLeft="@dimen/padding_10"
+      android:paddingRight="@dimen/padding_10"
+      >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="金额:"
+        android:textColor="@color/black_333333"
+        android:textSize="@dimen/font_size_14"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+      <TextView
+          android:id="@+id/tv_1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/setting_type_rule_amount_eq"
+          android:textColor="@color/black_333333"
+          android:textSize="@dimen/font_size_14"
+          />
+
+      <EditText
+          android:id="@+id/et_min_amount"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:inputType="number"
+          android:minWidth="@dimen/height_48"
+          android:textColor="@color/black_666666"
+          android:textSize="@dimen/font_size_14"
+          />
+
+      <TextView
+          android:id="@+id/tv_2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/black_333333"
+          android:textSize="@dimen/font_size_14"
+          />
+
+      <EditText
+          android:id="@+id/et_max_amount"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:inputType="number"
+          android:minWidth="@dimen/height_48"
+          android:textColor="@color/black_666666"
+          android:textSize="@dimen/font_size_14"
+          />
+    </LinearLayout>
+
+  </RelativeLayout>
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/height_48"
+      android:layout_margin="@dimen/padding_10"
+      android:background="@color/qmui_config_color_white"
+      android:gravity="center_vertical"
+      android:paddingLeft="@dimen/padding_10"
+      android:paddingRight="@dimen/padding_10"
+      >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="税率:"
+        android:textColor="@color/black_333333"
+        android:textSize="@dimen/font_size_14"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+      <EditText
+          android:id="@+id/et_scale"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/padding_10"
+          android:layout_weight="1"
+          android:inputType="number"
+          android:maxLength="2"
+          android:minWidth="@dimen/height_48"
+          android:textColor="@color/black_666666"
+          android:textSize="@dimen/font_size_14"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="% "
+          android:textColor="@color/black_333333"
+          android:textSize="@dimen/font_size_14"
+          />
+
+
+    </LinearLayout>
+  </RelativeLayout>
+
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/height_48"
+      android:layout_margin="@dimen/padding_10"
+      android:background="@color/qmui_config_color_white"
+      android:gravity="center_vertical"
+      android:paddingLeft="@dimen/padding_10"
+      android:paddingRight="@dimen/padding_10"
+      >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="速算扣除数:"
+        android:textColor="@color/black_333333"
+        android:textSize="@dimen/font_size_14"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/padding_10"
+          android:text="￥"
+          android:textColor="@color/black_333333"
+          android:textSize="@dimen/font_size_14"
+          />
+
+      <EditText
+          android:id="@+id/et_fix_amount"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:inputType="number"
+          android:maxLength="8"
+          android:minWidth="@dimen/height_48"
+          android:textColor="@color/black_666666"
+          android:textSize="@dimen/font_size_14"
+          />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="元"
+          android:textColor="@color/black_333333"
+          android:textSize="@dimen/font_size_14"
+          />
+
+    </LinearLayout>
+  </RelativeLayout>
+
+
+</LinearLayout>

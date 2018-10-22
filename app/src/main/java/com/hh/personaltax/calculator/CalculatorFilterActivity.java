@@ -201,7 +201,7 @@ public class CalculatorFilterActivity extends BaseActivity {
         grid_type.setAdapter(mGridAdapter);
         grid_type.setOnItemClickListener(mGridItemClickListener);
         
-        Long intentItemId = getIntent().getLongExtra(MoneyConstants.INTENT_COST_EDIT_ITEM_ID, -1);
+        Long intentItemId = getIntent().getLongExtra(MoneyConstants.INTENT_TAX_TYPE_MODIFY_ID, -1);
         
         if (intentItemId != -1) {
             bar_top.setTitle("修改记账");
@@ -279,7 +279,7 @@ public class CalculatorFilterActivity extends BaseActivity {
         
         if (temp != -1) {
             ToastUtils.showShort("记账成功");
-            sendBroadcast(new Intent(ReceiverUtils.RECEIVER_COST_LIST_UPDATE));
+            sendBroadcast(new Intent(ReceiverUtils.RECEIVER_TAX_TYPE_LIST_UPDATE));
             onBackPressed();
         }
     }

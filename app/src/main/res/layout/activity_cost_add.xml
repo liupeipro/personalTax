@@ -15,7 +15,7 @@
       app:qmui_topbar_left_back_drawable_id="@drawable/qmui_icon_topbar_back"
       />
 
-  <com.peil.personaltax.view.BottomBar
+  <com.hh.personaltax.view.BottomBar
       android:id="@+id/bottomBar"
       android:layout_width="wrap_content"
       android:layout_height="@dimen/bottombar_height"
@@ -25,7 +25,7 @@
       android:background="@color/view_container_bg"
       />
 
-  <com.peil.personaltax.view.InputAmountView
+  <com.hh.personaltax.view.InputAmountView
       android:id="@+id/view_amount"
       android:layout_width="wrap_content"
       android:layout_height="@dimen/view_inputamount_height"

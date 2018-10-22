@@ -1,4 +1,4 @@
-package com.hh.personaltax.setting;
+package com.hh.personaltax.calculator;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,19 +13,25 @@ import android.view.ViewGroup;
 import com.blankj.utilcode.util.ToastUtils;
 import com.hh.personaltax.R;
 import com.hh.personaltax.base.BaseFragment;
-import com.hh.personaltax.base.TaxApplication;
-import com.hh.personaltax.model.CostItem;
 import com.hh.personaltax.model.TaxType;
-import com.hh.personaltax.util.MoneyConstants;
 import com.hh.personaltax.util.ReceiverUtils;
 import com.hh.personaltax.view.RefreshLayout;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
-import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
 import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
-import java.util.List;
 
-public class SetsFragment extends BaseFragment {
+/**
+ * 个税历史 列表
+ */
+public class CalculatorListFragment extends BaseFragment {
+    
+    public static CalculatorListFragment newInstance() {
+        Bundle args = new Bundle();
+        CalculatorListFragment fragment = new CalculatorListFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+    
     BroadcastReceiver mUpdateReceiver = new BroadcastReceiver() {
         @Override public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(ReceiverUtils.RECEIVER_TAX_TYPE_LIST_UPDATE)) {
@@ -57,19 +63,14 @@ public class SetsFragment extends BaseFragment {
         }
     };
     
-    private void gotoCheck(CostItem item) {
-        Intent intent = new Intent(_mActivity, CostCheckActivity.class);
-        intent.putExtra(MoneyConstants.INTENT_TAX_TYPE_MODIFY_ID, item.get_id());
-        startActivity(intent);
-    }
-    
     private void initView(View view) {
         bar_top = view.findViewById(R.id.bar_top);
         bar_top.setTitle("参数类型");
-        bar_top.addRightTextButton("新增类型", R.id.topbar_right_change_button)
+        bar_top.addRightImageButton(R.mipmap.plus, R.id.topbar_right_change_button)
                .setOnClickListener(new View.OnClickListener() {
                    @Override public void onClick(View v) {
-                       gotoTypeDetail(-1L, MoneyConstants.INTENT_TAX_TYPE_MODIFY_FROM_ADD);
+                       startActivity(new Intent(_mActivity.getApplicationContext(),
+                                                CalculatorFilterActivity.class));
                    }
                });
         pull_to_refresh = view.findViewById(R.id.pull_to_refresh);
@@ -92,51 +93,37 @@ public class SetsFragment extends BaseFragment {
     
     private void loadAllList() {
         // 获取数据库中数据
-        //List<TaxType> tempData = null;
-        List<TaxType> tempData = TaxApplication.getDaoInstant().getTaxTypeDao().loadAll();
-        if (tempData != null) {
-            QMUIGroupListView.Section sections =
-                QMUIGroupListView.newSection(_mActivity).setTitle("").setDescription("");
-            sections.removeFrom(groupListView);
-            if (tempData.size() > 0) {
-                for (final TaxType type : tempData) {
-                    QMUICommonListItemView itemView =
-                        groupListView.createItemView(null, type.getName(), "",
-                                                     QMUICommonListItemView.HORIZONTAL,
-                                                     QMUICommonListItemView.ACCESSORY_TYPE_NONE);
-                    sections.addItemView(itemView, new View.OnClickListener() {
-                        @Override public void onClick(View v) {
-                            gotoTypeDetail(type.getId(),
-                                           MoneyConstants.INTENT_TAX_TYPE_MODIFY_FROM_MODIFY);
-                        }
-                    });
-                }
-                
-                sections.addTo(groupListView);
-            } else {
-                ToastUtils.showShort("数据为空...");
-            }
-        } else {
-            ToastUtils.showShort("加载失败，请重新刷新");
-        }
-        
+        //List<TaxType> tempData = TaxApplication.getDaoInstant().getTaxTypeDao().loadAll();
+        //if (tempData != null) {
+        //    QMUIGroupListView.Section sections =
+        //        QMUIGroupListView.newSection(_mActivity).setTitle("").setDescription("");
+        //    if (tempData.size() > 0) {
+        //        for (final TaxType type : tempData) {
+        //            QMUICommonListItemView itemView =
+        //                groupListView.createItemView(null, type.getName(), "",
+        //                                             QMUICommonListItemView.HORIZONTAL,
+        //                                             QMUICommonListItemView.ACCESSORY_TYPE_NONE);
+        //            sections.addItemView(itemView, new View.OnClickListener() {
+        //                @Override public void onClick(View v) {
+        //                    gotoTypeDetail(type);
+        //                }
+        //            });
+        //        }
+        //
+        //        sections.addTo(groupListView);
+        //    } else {
+        //        sections.removeFrom(groupListView);
+        //        ToastUtils.showShort("数据为空...");
+        //    }
+        //} else {
+        //    ToastUtils.showShort("加载失败，请重新刷新");
+        //}
+        //
         pull_to_refresh.finishRefresh();
     }
     
-    private void gotoTypeDetail(Long typeId, String from) {
-        Intent intent = new Intent(_mActivity, SetModifyActivity.class);
-        intent.putExtra(MoneyConstants.INTENT_TAX_TYPE_MODIFY_ID, typeId);
-        intent.putExtra(MoneyConstants.INTENT_TAX_TYPE_MODIFY_FROM, from);
-        startActivity(intent);
-    }
-    
-    public static SetsFragment newInstance() {
-        Bundle args = new Bundle();
-        SetsFragment fragment = new SetsFragment();
-        
-        fragment.setArguments(args);
-        
-        return fragment;
+    private void gotoTypeDetail(TaxType type) {
+        ToastUtils.showShort("类型修改");
     }
     
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {

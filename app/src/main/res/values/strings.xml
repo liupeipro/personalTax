@@ -13,4 +13,7 @@
   <string name="cost_add_item_time">时间</string>
   <string name="cost_add_item_type">类别</string>
   <string name="cost_add_item_account">账户</string>
+
+  <!-- setting -->
+  <string name="setting_type_rule_amount_eq"> - </string>
 </resources>
