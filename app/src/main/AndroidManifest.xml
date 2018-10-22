@@ -36,6 +36,8 @@
     </activity>
     <activity android:name=".about.IntroduceActivity">
     </activity>
+    <activity android:name=".calculator.CalculTaxActivity">
+    </activity>
   </application>
 
 </manifest>

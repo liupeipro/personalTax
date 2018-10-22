@@ -52,12 +52,8 @@ public class CalculatorListFragment extends BaseFragment {
                     break;
                 
                 case R.id.topbar_right_change_button:
-                    //Intent intent = new Intent(CostCheckActivity.this, CostAddActivity.class);
-                    //
-                    //intent.putExtra(MoneyConstants.INTENT_TAX_TYPE_MODIFY_ID, mItem.get_id());
-                    //startActivity(intent);
-                    //finish();
-                    
+                    Intent intent = new Intent(_mActivity, CalculTaxActivity.class);
+                    startActivity(intent);
                     break;
             }
         }
@@ -65,14 +61,9 @@ public class CalculatorListFragment extends BaseFragment {
     
     private void initView(View view) {
         bar_top = view.findViewById(R.id.bar_top);
-        bar_top.setTitle("参数类型");
+        bar_top.setTitle("个税计算");
         bar_top.addRightImageButton(R.mipmap.plus, R.id.topbar_right_change_button)
-               .setOnClickListener(new View.OnClickListener() {
-                   @Override public void onClick(View v) {
-                       startActivity(new Intent(_mActivity.getApplicationContext(),
-                                                CalculatorFilterActivity.class));
-                   }
-               });
+               .setOnClickListener(mOnClickListener);
         pull_to_refresh = view.findViewById(R.id.pull_to_refresh);
         pull_to_refresh.setOnPullListener(new QMUIPullRefreshLayout.OnPullListener() {
             @Override public void onMoveTarget(int offset) {

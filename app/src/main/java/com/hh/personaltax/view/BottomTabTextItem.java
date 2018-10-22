@@ -68,13 +68,13 @@ public class BottomTabTextItem extends FrameLayout implements IBarTab {
             new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                                           ViewGroup.LayoutParams.WRAP_CONTENT);
         
-        paramsTv.topMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10,
+        paramsTv.topMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15,
                                                              getResources().getDisplayMetrics());
-        paramsTv.bottomMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10,
+        paramsTv.bottomMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15,
                                                                 getResources().getDisplayMetrics());
-        paramsTv.leftMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10,
+        paramsTv.leftMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15,
                                                               getResources().getDisplayMetrics());
-        paramsTv.rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10,
+        paramsTv.rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15,
                                                                getResources().getDisplayMetrics());
         mTvTitle.setTextSize(16);
         mTvTitle.setTextColor(ContextCompat.getColor(context, R.color.tab_unselect));
@@ -87,7 +87,8 @@ public class BottomTabTextItem extends FrameLayout implements IBarTab {
         super.setSelected(selected);
         
         if (selected) {
-            mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.app_color_blue));
+            mTvTitle.setTextColor(
+                ContextCompat.getColor(mContext, R.color.qmui_config_color_white));
         } else {
             mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.tab_unselect));
         }

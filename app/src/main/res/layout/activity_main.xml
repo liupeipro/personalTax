@@ -16,7 +16,7 @@
   <com.hh.personaltax.view.BottomTabBar
       android:id="@+id/bottomBar"
       android:layout_width="match_parent"
-      android:layout_height="@dimen/bottombar_height"
+      android:layout_height="@dimen/height_60"
       android:layout_gravity="bottom"
       />
 </FrameLayout>
