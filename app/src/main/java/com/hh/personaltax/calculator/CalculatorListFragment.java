@@ -13,12 +13,15 @@ import android.view.ViewGroup;
 import com.blankj.utilcode.util.ToastUtils;
 import com.hh.personaltax.R;
 import com.hh.personaltax.base.BaseFragment;
+import com.hh.personaltax.base.TaxApplication;
 import com.hh.personaltax.model.TaxType;
 import com.hh.personaltax.util.ReceiverUtils;
 import com.hh.personaltax.view.RefreshLayout;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
+import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
 import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
+import java.util.List;
 
 /**
  * 个税历史 列表
@@ -84,31 +87,31 @@ public class CalculatorListFragment extends BaseFragment {
     
     private void loadAllList() {
         // 获取数据库中数据
-        //List<TaxType> tempData = TaxApplication.getDaoInstant().getTaxTypeDao().loadAll();
-        //if (tempData != null) {
-        //    QMUIGroupListView.Section sections =
-        //        QMUIGroupListView.newSection(_mActivity).setTitle("").setDescription("");
-        //    if (tempData.size() > 0) {
-        //        for (final TaxType type : tempData) {
-        //            QMUICommonListItemView itemView =
-        //                groupListView.createItemView(null, type.getName(), "",
-        //                                             QMUICommonListItemView.HORIZONTAL,
-        //                                             QMUICommonListItemView.ACCESSORY_TYPE_NONE);
-        //            sections.addItemView(itemView, new View.OnClickListener() {
-        //                @Override public void onClick(View v) {
-        //                    gotoTypeDetail(type);
-        //                }
-        //            });
-        //        }
-        //
-        //        sections.addTo(groupListView);
-        //    } else {
-        //        sections.removeFrom(groupListView);
-        //        ToastUtils.showShort("数据为空...");
-        //    }
-        //} else {
-        //    ToastUtils.showShort("加载失败，请重新刷新");
-        //}
+        List<TaxType> tempData = TaxApplication.getDaoInstant().getTaxTypeDao().loadAll();
+        if (tempData != null) {
+            QMUIGroupListView.Section sections =
+                QMUIGroupListView.newSection(_mActivity).setTitle("").setDescription("");
+            if (tempData.size() > 0) {
+                for (final TaxType type : tempData) {
+                    QMUICommonListItemView itemView =
+                        groupListView.createItemView(null, type.getName(), "",
+                                                     QMUICommonListItemView.HORIZONTAL,
+                                                     QMUICommonListItemView.ACCESSORY_TYPE_NONE);
+                    sections.addItemView(itemView, new View.OnClickListener() {
+                        @Override public void onClick(View v) {
+                            gotoTypeDetail(type);
+                        }
+                    });
+                }
+
+                sections.addTo(groupListView);
+            } else {
+                sections.removeFrom(groupListView);
+                ToastUtils.showShort("数据为空...");
+            }
+        } else {
+            ToastUtils.showShort("加载失败，请重新刷新");
+        }
         //
         pull_to_refresh.finishRefresh();
     }

@@ -16,4 +16,18 @@
 
   <!-- setting -->
   <string name="setting_type_rule_amount_eq"> - </string>
+
+
+  <!-- tax -->
+  <string name="tax_type_1">工资、薪金所得</string>
+  <string name="tax_type_2">奖金所得</string>
+  <string name="tax_type_3">劳务报酬所得</string>
+  <string name="tax_type_4">稿酬所得</string>
+  <string name="tax_type_5">财产租赁所得</string>
+  <string name="tax_type_6">特权使用费所得</string>
+  <string name="tax_type_7">个体工商户生产、经营所得</string>
+  <string name="tax_type_8">对企事业单位的承包、承租经营所得</string>
+  <string name="tax_type_9">利息、股息、分红所得</string>
+  <string name="tax_type_10">偶然所得</string>
+
 </resources>
